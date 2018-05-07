@@ -26,6 +26,7 @@ def postorder(t):
 		print(t.val)
 
 def preorder_nonrec(t):
+	'''前向非递归遍历'''
 	stack = Stack()
 	while t is not None or not stack.is_empty():
 		while t is not None:
@@ -33,4 +34,15 @@ def preorder_nonrec(t):
 			stack.push(t.right) # 可以判断 t.right 是否为空优化空间复杂度 
 			t = t.left
 		t = stack.pop()
+
+def inorder_nonrec(t):
+	'''中向非递归遍历'''
+	stack = Stack()
+	while t is not None or not stack.is_empty():
+		while t is not None:
+			stack.push(t)
+			t = t.left
+		t = stack.pop()
+		print(t.val)
+		t = t.right
 
