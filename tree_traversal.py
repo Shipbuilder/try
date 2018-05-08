@@ -46,3 +46,17 @@ def inorder_nonrec(t):
 		print(t.val)
 		t = t.right
 
+def postorder_nonrec(t):
+	'''后序非递归遍历'''
+	stack = Stack()
+	while t is not None or not stack.is_empty():
+		while t is not None:
+			stack.push(t)
+			t = t.left if t.left is not None else t.right # 满足后序遍历先左后右的要求
+		t = stack.pop()
+		print(t.val)
+		if not stack.is_empty() and stack.top().left == t:
+			t = stack.top().right
+		else:
+			t = None # 保证栈空时终止循环和右子树遍历完毕后强制出栈
+
