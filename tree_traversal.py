@@ -60,3 +60,16 @@ def postorder_nonrec(t):
 		else:
 			t = None # 保证栈空时终止循环和右子树遍历完毕后强制出栈
 
+def levelorder(t):
+	'''层次遍历
+	   广度优先搜索'''
+	queue = Queue()
+	queue.enqueue(t)
+	while not queue.is_empty():
+		t = queue.dequeue()
+		if t is None:
+			continue
+		queue.enqueue(t.left)
+		queue.enqueue(t.right)
+		print(t.val)
+
